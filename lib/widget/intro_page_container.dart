@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IntroPageContainer extends StatefulWidget {
-  Widget introPageChild;
+  final Widget introPageChild;
   // Widget bottomButton;
 
   // IntroPageContainer(this.introPageChild, this.bottomButton);

@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import '../constants/sizes.dart';
-import '../widget/bottom_buttom.dart';
+import '../widget/button/bottom_buttom.dart';
+import '../widget/input/nominal_debt_input.dart';
+import '../widget/input/value_input.dart';
 import '../widget/intro_page_container.dart';
-import '../widget/questions.dart';
-import '../widget/subtitle.dart';
-import '../widget/title.dart';
-import '../widget/value_input.dart';
+import '../widget/text/questions.dart';
+import '../widget/text/subtitle.dart';
+import '../widget/text/title.dart';
 
 class IntroPage extends StatefulWidget {
   @override
@@ -16,10 +17,12 @@ class IntroPage extends StatefulWidget {
 
 class _IntroPageState extends State<IntroPage> {
   final keyBoardController = KeyboardVisibilityController();
+  final nominalDebtController = TextEditingController();
   bool keyBoardIsVisible = false;
   double titleSize = Sizes.titleBigSize;
   double subTitleSize = Sizes.subTitleBigSize;
   double questionSize = Sizes.questionBigSize;
+  int nominalDebt;
 
   @override
   void initState() {
@@ -53,23 +56,52 @@ class _IntroPageState extends State<IntroPage> {
                   Question("Your total nontimed debt?", questionSize),
                   ValueInput(),
                   Question("Amount of deadlined debts?", questionSize),
-                  ValueInput(),
+                  NominalDebtInput(nominalDebtController),
                 ],
               ),
             ),
             Expanded(
               child: Container(),
             ),
-            if (keyBoardIsVisible == false) 
-              BottomButton(),
+            if (nominalDebtController.text != null &&
+                nominalDebtController.text != "0" &&
+                nominalDebtController.text != "" &&
+                keyBoardIsVisible == false)
+              Container(
+                height: 100,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: int.parse(nominalDebtController.text),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 25.0, vertical: 10),
+                      child: Card(
+                        color: Colors.red,
+                        elevation: 5,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width - 50,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("$index"),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            if (keyBoardIsVisible == false) BottomButton(),
           ],
         ),
       ),
     );
   }
-  
-  void invertTextSizes(bool isKeyBoardOpen){
-    if(isKeyBoardOpen){
+
+  void invertTextSizes(isKeyBoardOpen) {
+    if (isKeyBoardOpen) {
       titleSize = Sizes.titleSmallSize;
       subTitleSize = Sizes.subTitleSmallSize;
       questionSize = Sizes.questionSmallSize;

@@ -9,9 +9,12 @@ class _ValueInputState extends State<ValueInput> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: TextStyle(fontSize: 55, color: Colors.white),
+      style: TextStyle(
+          fontSize: 55,
+          color: Colors.white,
+          fontFamily: 'Ubuntu'
+      ),
       keyboardType: TextInputType.number,
-      // inputFormatters: [totalAmount],
       decoration: InputDecoration(
         border: InputBorder.none,
         hintStyle: TextStyle(

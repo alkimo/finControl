@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hexagon/hexagon.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class TestPage extends StatefulWidget {
   @override
@@ -25,12 +24,6 @@ class _IntroPageState extends State<TestPage> {
   double _questionSize;
   var _lastTotalDeadlinedDebt;
   var _currentTotalDeadlinedDebt;
-
-  var dateFormatter =
-  MaskTextInputFormatter(mask: '##/##/##', filter: {"#": RegExp(r'[0-9]')});
-
-  var totalAmount = MaskTextInputFormatter(
-      mask: '##########', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   void initState() {
@@ -105,7 +98,6 @@ class _IntroPageState extends State<TestPage> {
               TextField(
                 style: TextStyle(fontSize: 55, color: Colors.white),
                 keyboardType: TextInputType.number,
-                inputFormatters: [totalAmount],
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintStyle: TextStyle(color: Colors.white, fontSize: 55),
@@ -123,7 +115,6 @@ class _IntroPageState extends State<TestPage> {
               TextField(
                 style: TextStyle(fontSize: 55, color: Colors.white),
                 keyboardType: TextInputType.number,
-                inputFormatters: [totalAmount],
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: '0.0',
@@ -191,7 +182,6 @@ class _IntroPageState extends State<TestPage> {
                                         Container(
                                           width: 120,
                                           child: TextField(
-                                            inputFormatters: [totalAmount],
                                             cursorColor: Colors.white,
                                             style: TextStyle(
                                               fontSize: 15,
@@ -225,7 +215,6 @@ class _IntroPageState extends State<TestPage> {
                                         Container(
                                           width: 120,
                                           child: TextField(
-                                            inputFormatters: [dateFormatter],
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: Colors.white,

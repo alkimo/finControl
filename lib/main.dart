@@ -1,7 +1,7 @@
-import 'package:fin_control/page/intro_page.dart';
-import 'package:fin_control/page/test_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'page/intro_page.dart';
 
 
 void main() {
