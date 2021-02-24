@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
+import '../constants/sizes.dart';
 import '../widget/bottom_buttom.dart';
 import '../widget/intro_page_container.dart';
 import '../widget/questions.dart';
@@ -15,7 +16,10 @@ class IntroPage extends StatefulWidget {
 
 class _IntroPageState extends State<IntroPage> {
   final keyBoardController = KeyboardVisibilityController();
-  bool _keyBoardIsOpen;
+  bool keyBoardIsVisible = false;
+  double titleSize = Sizes.titleBigSize;
+  double subTitleSize = Sizes.subTitleBigSize;
+  double questionSize = Sizes.questionBigSize;
 
   @override
   void initState() {
@@ -23,7 +27,8 @@ class _IntroPageState extends State<IntroPage> {
 
     keyBoardController.onChange.listen((visible) {
       setState(() {
-        _keyBoardIsOpen = visible;
+        invertTextSizes(visible);
+        keyBoardIsVisible = visible;
       });
     });
   }
@@ -41,26 +46,37 @@ class _IntroPageState extends State<IntroPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MyTitle("Financial"),
-                  MySubTitle("Control"),
-                  Question("Whats your monthly income?"),
+                  MyTitle("Financial", titleSize),
+                  MySubTitle("Control", subTitleSize),
+                  Question("Whats your monthly income?", questionSize),
                   ValueInput(),
-                  Question("Your total nontimed debt?"),
+                  Question("Your total nontimed debt?", questionSize),
                   ValueInput(),
-                  Question("Amount of deadlined debts?"),
+                  Question("Amount of deadlined debts?", questionSize),
                   ValueInput(),
                 ],
               ),
             ),
-
             Expanded(
               child: Container(),
             ),
-            if (_keyBoardIsOpen == false)
+            if (keyBoardIsVisible == false) 
               BottomButton(),
           ],
         ),
       ),
     );
+  }
+  
+  void invertTextSizes(bool isKeyBoardOpen){
+    if(isKeyBoardOpen){
+      titleSize = Sizes.titleSmallSize;
+      subTitleSize = Sizes.subTitleSmallSize;
+      questionSize = Sizes.questionSmallSize;
+    } else {
+      titleSize = Sizes.titleBigSize;
+      subTitleSize = Sizes.subTitleBigSize;
+      questionSize = Sizes.questionBigSize;
+    }
   }
 }

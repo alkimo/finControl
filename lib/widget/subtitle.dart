@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class MySubTitle extends StatefulWidget {
   final String text;
+  final double textSize;
 
-  MySubTitle(this.text);
+  MySubTitle(this.text, this.textSize);
 
   @override
   _MySubTitleState createState() => _MySubTitleState();
@@ -19,7 +20,7 @@ class _MySubTitleState extends State<MySubTitle> {
         widget.text,
         style: TextStyle(
           color: Colors.white,
-          fontSize: 50,
+          fontSize: widget.textSize,
           fontFamily: 'Ubuntu',
         ),
       ),
