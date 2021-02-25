@@ -70,7 +70,9 @@ class _IntroPageState extends State<IntroPage> {
             if (isNominalDebtValid(nominalDebt))
               DeadlinedDebtInput(nominalDebt),
             Expanded(
-              child: Container(),
+              child: Container(
+                height: 0,
+              ),
             ),
             if (keyBoardIsVisible == false && isNominalDebtValid(nominalDebt))
               BottomButton(),

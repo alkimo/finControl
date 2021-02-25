@@ -8,7 +8,7 @@ class DeadlinedDebtInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 85,
+      height: 88,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: nominalDebt,
@@ -23,13 +23,70 @@ class DeadlinedDebtInput extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
-                      Icons.attach_money,
-                      color: Colors.white,
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.attach_money,
+                          color: Colors.white,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.white,
+                          ),
+                          height: 40,
+                          width: 115,
+                          child: TextField(
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.black,
+                            ),
+                            keyboardType:
+                            TextInputType.datetime,
+                            decoration: InputDecoration(
+                              hintText: "0.0",
+                              border:
+                              const OutlineInputBorder(),
+                              hintStyle: TextStyle(
+                                  color: Colors.black),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Icon(
-                      Icons.calendar_today_outlined,
-                      color: Colors.white,
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_today_outlined,
+                          color: Colors.white,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                            ),
+                            height: 40,
+                            width: 115,
+                            child: TextField(
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                              ),
+                              keyboardType:
+                              TextInputType.datetime,
+                              decoration: InputDecoration(
+                                hintText: "dd/mm/aaaa",
+                                border:
+                                const OutlineInputBorder(),
+                                hintStyle: TextStyle(
+                                    color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
