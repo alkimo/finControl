@@ -4,7 +4,7 @@ class BottomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 85,
+      height: 70,
       color: Colors.redAccent,
       width: double.infinity,
       child: FlatButton(
