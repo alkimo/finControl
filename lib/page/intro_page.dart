@@ -47,7 +47,6 @@ class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: IntroPageContainer(
         Column(
           children: [
@@ -63,19 +62,20 @@ class _IntroPageState extends State<IntroPage> {
                   ValueInput(),
                   Question("Total debt without deadline?", questionSize),
                   ValueInput(),
-                  Question("Nominal deadlined debt?", questionSize),
+                  Question("Nominal amount of deadlined debt?", questionSize),
                   NominalDebtInput(nominalDebtController, nominalDebtTextSize),
                 ],
               ),
             ),
-            if (isNominalDebtValid(nominalDebt))
-              DeadlinedDebtInput(nominalDebt),
             Expanded(
               child: Container(
                 height: 0,
               ),
             ),
-            if (keyBoardIsVisible == false && isNominalDebtValid(nominalDebt))
+            if (isNominalDebtValid(nominalDebt))
+              DeadlinedDebtInput(nominalDebt),
+
+            if (keyBoardIsVisible == false)
               BottomButton(),
           ],
         ),
@@ -88,19 +88,19 @@ class _IntroPageState extends State<IntroPage> {
       titleSize = Sizes.titleSmallSize;
       subTitleSize = Sizes.subTitleSmallSize;
       questionSize = Sizes.questionSmallSize;
-      nominalDebtTextSize = Sizes.nominalDebtSmallTextSize;
     } else {
       titleSize = Sizes.titleBigSize;
       subTitleSize = Sizes.subTitleBigSize;
       questionSize = Sizes.questionBigSize;
-      nominalDebtTextSize = Sizes.nominalDebtBigTextSize;
     }
   }
 
   bool isNominalDebtValid(nominalDebtValue) {
+    print(nominalDebtValue);
     if (nominalDebtValue != null &&
         nominalDebtValue != "0" &&
-        nominalDebtValue != "") {
+        nominalDebtValue != "" &&
+        nominalDebtValue != 0) {
       return true;
     } else {
       return false;
