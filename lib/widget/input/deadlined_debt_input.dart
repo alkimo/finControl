@@ -24,8 +24,8 @@ class DeadlinedDebtInput extends StatelessWidget {
               padding: const EdgeInsets.only(
                   left: 5.0, right: 5.0, top: 15, bottom: 15),
               child: Card(
-                // color: Colors.green,
-                color: Color(0xFF1d2e51),
+                color: Colors.green,
+                // color: Color(0xFF1d2e51),
                 elevation: 1,
                 child: Container(
                   width: MediaQuery.of(context).size.width - 50,
