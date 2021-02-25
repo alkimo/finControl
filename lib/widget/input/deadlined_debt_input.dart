@@ -38,12 +38,13 @@ class DeadlinedDebtInput extends StatelessWidget {
                           width: 115,
                           child: TextField(
                             style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 15,
                               color: Colors.black,
                             ),
                             keyboardType:
                             TextInputType.datetime,
                             decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(left: 15),
                               hintText: "0.0",
                               border:
                               const OutlineInputBorder(),
@@ -77,6 +78,7 @@ class DeadlinedDebtInput extends StatelessWidget {
                               keyboardType:
                               TextInputType.datetime,
                               decoration: InputDecoration(
+                                contentPadding: EdgeInsets.only(left: 15),
                                 hintText: "dd/mm/aaaa",
                                 border:
                                 const OutlineInputBorder(),

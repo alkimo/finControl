@@ -23,6 +23,7 @@ class _IntroPageState extends State<IntroPage> {
   double titleSize = Sizes.titleBigSize;
   double subTitleSize = Sizes.subTitleBigSize;
   double questionSize = Sizes.questionBigSize;
+  double nominalDebtTextSize = Sizes.nominalDebtBigTextSize;
   int nominalDebt = 0;
 
   @override
@@ -62,8 +63,8 @@ class _IntroPageState extends State<IntroPage> {
                   ValueInput(),
                   Question("Total debt without deadline?", questionSize),
                   ValueInput(),
-                  Question("Nominal amount of deadlined debt?", questionSize),
-                  NominalDebtInput(nominalDebtController),
+                  Question("Nominal deadlined debt?", questionSize),
+                  NominalDebtInput(nominalDebtController, nominalDebtTextSize),
                 ],
               ),
             ),
@@ -87,10 +88,12 @@ class _IntroPageState extends State<IntroPage> {
       titleSize = Sizes.titleSmallSize;
       subTitleSize = Sizes.subTitleSmallSize;
       questionSize = Sizes.questionSmallSize;
+      nominalDebtTextSize = Sizes.nominalDebtSmallTextSize;
     } else {
       titleSize = Sizes.titleBigSize;
       subTitleSize = Sizes.subTitleBigSize;
       questionSize = Sizes.questionBigSize;
+      nominalDebtTextSize = Sizes.nominalDebtBigTextSize;
     }
   }
 

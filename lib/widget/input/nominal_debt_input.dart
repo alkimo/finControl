@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class NominalDebtInput extends StatefulWidget {
   final TextEditingController nominalDebtController;
+  double fontsize;
 
-  NominalDebtInput(this.nominalDebtController);
+  NominalDebtInput(this.nominalDebtController, this.fontsize);
 
   @override
   _NominalDebtInputState createState() => _NominalDebtInputState();
 }
 
 class _NominalDebtInputState extends State<NominalDebtInput> {
-  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +18,10 @@ class _NominalDebtInputState extends State<NominalDebtInput> {
         TextField(
           controller: widget.nominalDebtController,
           style: TextStyle(
-              fontSize: 35, color: Colors.white, fontFamily: 'Ubuntu'),
+              fontSize: widget.fontsize,
+              color: Colors.white,
+              fontFamily: 'Ubuntu'
+          ),
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
             border: InputBorder.none,
