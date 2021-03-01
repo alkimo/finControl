@@ -1,15 +1,17 @@
-import 'package:fin_control/widget/input/deadlined_debt_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import '../constants/sizes.dart';
 import '../widget/button/bottom_buttom.dart';
+import '../widget/input/deadlined_debt_input.dart';
 import '../widget/input/nominal_debt_input.dart';
 import '../widget/input/value_input.dart';
 import '../widget/intro_page_container.dart';
+import '../widget/size_filler.dart';
 import '../widget/text/questions.dart';
 import '../widget/text/subtitle.dart';
 import '../widget/text/title.dart';
+
 
 class IntroPage extends StatefulWidget {
   @override
@@ -19,11 +21,14 @@ class IntroPage extends StatefulWidget {
 class _IntroPageState extends State<IntroPage> {
   final keyBoardController = KeyboardVisibilityController();
   final nominalDebtController = TextEditingController();
+
   bool keyBoardIsVisible = false;
+
   double titleSize = Sizes.titleBigSize;
   double subTitleSize = Sizes.subTitleBigSize;
   double questionSize = Sizes.questionBigSize;
   double nominalDebtTextSize = Sizes.nominalDebtBigTextSize;
+
   int nominalDebt = 0;
 
   @override
@@ -38,7 +43,7 @@ class _IntroPageState extends State<IntroPage> {
 
     keyBoardController.onChange.listen((visible) {
       setState(() {
-        invertTextSizes(visible);
+        invertTextSizes(isKeyBoardOpen: visible);
         keyBoardIsVisible = visible;
       });
     });
@@ -67,15 +72,11 @@ class _IntroPageState extends State<IntroPage> {
                 ],
               ),
             ),
-            Expanded(
-              child: Container(
-                height: 0,
-              ),
-            ),
+            SizeFiller(),
             if (isNominalDebtValid(nominalDebt))
               DeadlinedDebtInput(nominalDebt),
 
-            if (keyBoardIsVisible == false)
+            if (!keyBoardIsVisible)
               BottomButton(),
           ],
         ),
@@ -83,7 +84,7 @@ class _IntroPageState extends State<IntroPage> {
     );
   }
 
-  void invertTextSizes(isKeyBoardOpen) {
+  void invertTextSizes({@required bool isKeyBoardOpen}) {
     if (isKeyBoardOpen) {
       titleSize = Sizes.titleSmallSize;
       subTitleSize = Sizes.subTitleSmallSize;
@@ -95,7 +96,7 @@ class _IntroPageState extends State<IntroPage> {
     }
   }
 
-  bool isNominalDebtValid(nominalDebtValue) {
+  bool isNominalDebtValid(int nominalDebtValue) {
     print(nominalDebtValue);
     if (nominalDebtValue != null &&
         nominalDebtValue != "0" &&
@@ -107,4 +108,6 @@ class _IntroPageState extends State<IntroPage> {
     }
   }
 }
+
+
 

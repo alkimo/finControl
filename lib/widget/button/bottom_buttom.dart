@@ -8,7 +8,7 @@ class BottomButton extends StatelessWidget {
       color: Colors.redAccent,
       width: double.infinity,
       child: FlatButton(
-        onPressed: () => print("Hey There"),
+        onPressed: () => Navigator.pushNamed(context, '/charts'),
         child: Center(
           child: Text(
             "Generate Charts",

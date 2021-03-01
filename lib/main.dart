@@ -1,3 +1,4 @@
+import 'package:fin_control/page/chart_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +15,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => IntroPage(),
+        '/charts': (context) => ChartPage(),
+      },
+      // home: TestPage(),
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: TestPage(),
-      home: IntroPage(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
